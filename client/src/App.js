@@ -1,13 +1,14 @@
-import { useContext } from "react";
-import { AuthContext } from "./Context/AuthContext";
+import Header from "./components/Header";
+import Home from "./pages/Home";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function App() {
     //Pull out values from context (global state), using the AuthContext.
-    const { user, setUser, isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
-    console.log(user);
-    console.log(isAuthenticated);
     return (
-        <div>Placeholder</div>
+        <Router>
+            <Header/>
+            <Route exact path="/" component={Home}/>
+        </Router>
     );
 }
 
