@@ -11,8 +11,8 @@ const Message = (props) => {
             baseClass += "alert-primary";
         }
 
-        //Return with text-center.
-        return baseClass + " text-center";
+        //Return with text-center and margin.
+        return baseClass + " text-center my-3";
     };
 
     return (

@@ -45,7 +45,7 @@ userRouter.post("/register", (request, response) => {
             );
         } else {
             //Otherwise, create the user using the new credentials.
-            const newUser = new User({email, username, password, role});
+            const newUser = new User({email, username, password, role:"user"});
             console.log(newUser);
             newUser.save(error => {
                 if(error) {
@@ -86,6 +86,15 @@ userRouter.post("/login", passport.authenticate("local", {session: false}), (req
             {
                 isAuthenticated: true, 
                 user: { username, role }
+            }
+        );
+    } else {
+        response.status(401).json(
+            {
+                message: {
+                    msgBody: "Incorrect username or password.",
+                    msgError: true
+                }
             }
         );
     }

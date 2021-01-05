@@ -13,7 +13,11 @@ export default {
             } else {
                 return { 
                     isAuthenticated: false,
-                    user: {email: "", username: "", role: ""}
+                    user: {email: "", username: "", role: ""},
+                    message: {
+                        msgBody: "Incorrect username or password.",
+                        msgError: true
+                    }
                 };
             }
         });

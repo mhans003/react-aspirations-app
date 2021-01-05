@@ -11,6 +11,8 @@ const Register = (props) => {
     const [user, setUser] = useState({email: "", username: "", password: "", role: ""});
     //Initialize message state.
     const [message, setMessage] = useState(null);
+    //Set input fields to enabled by default until logged in.
+    const [disabled, setDisabled] = useState(false);
 
     //Create a reference for the timer.
     let timerID = useRef(null);
@@ -55,6 +57,7 @@ const Register = (props) => {
             resetForm();
             //As long as there is no error, set the timer for 2 seconds to redirect to login page after registering.
             if(!message.msgError) {
+                setDisabled(true);
                 timerID = setTimeout(() => {
                     props.history.push("/login");
                 }, 2000);
@@ -68,18 +71,18 @@ const Register = (props) => {
                 <h3 className="text-center my-4">Register</h3>
                 <hr className="my-4"/>
                 <div className="form-group">
-                    <input type="email" name="email" onChange={handleChange} className="form-control form-control-lg" placeholder="Email" aria-label="Enter Email"/>
+                    <input type="email" name="email" onChange={handleChange} className="form-control form-control-lg" placeholder="Email" aria-label="Enter Email" disabled={disabled} required/>
                 </div>
                 <div className="form-group">
-                    <input type="text" name="username" onChange={handleChange} className="form-control form-control-lg" placeholder="Username" aria-label="Enter Username"/>
+                    <input type="text" name="username" onChange={handleChange} className="form-control form-control-lg" placeholder="Username" aria-label="Enter Username" disabled={disabled} minLength="5" required/>
                 </div>
                 <div className="form-group">
-                    <input type="password" name="password" onChange={handleChange} className="form-control form-control-lg" placeholder="Password" aria-label="Enter Password"/>
+                    <input type="password" name="password" onChange={handleChange} className="form-control form-control-lg" placeholder="Password" aria-label="Enter Password" disabled={disabled} minLength="8" required/>
                 </div>
-                <div className="form-group">
-                    <input type="text" name="role" onChange={handleChange} className="form-control form-control-lg" placeholder="Role"/>
+                <div className="form-group d-none">
+                    <input type="text" name="role" onChange={handleChange} className="form-control form-control-lg" placeholder="user" value="user" disabled={true}/>
                 </div>
-                <button className="btn btn-lg btn-primary btn-block" type="submit">
+                <button className="btn btn-lg btn-primary btn-block" type="submit" disabled={disabled}>
                     Sign Up
                 </button>
             </form>
