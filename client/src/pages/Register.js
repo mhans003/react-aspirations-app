@@ -34,6 +34,7 @@ const Register = (props) => {
         );
     }
 
+    /*
     const resetForm = () => {
         setUser(
             {
@@ -44,6 +45,7 @@ const Register = (props) => {
             }
         );
     }
+    */
 
     //Handle when the form is submitted.
     const handleSubmit = (event) => {
@@ -54,7 +56,7 @@ const Register = (props) => {
             const { message } = data;
             setMessage(message);
             //Reset the form.
-            resetForm();
+            //resetForm();
             //As long as there is no error, set the timer for 2 seconds to redirect to login page after registering.
             if(!message.msgError) {
                 setDisabled(true);

@@ -117,7 +117,8 @@ userRouter.get("/logout", passport.authenticate("jwt", {session: false}), (reque
 //Create a new aspiration for an existing user.
 userRouter.post("/aspiration", passport.authenticate("jwt", {session: false}), (request, response) => {
     //Create the instance of the new aspiration using the request body.
-    const aspiration = new Aspiration(request.body);
+    console.log(request.body);
+    const aspiration = new Aspiration({...request.body, status: "In Progress"});
     //Save this new aspiration. 
     aspiration.save(error => {
         if(error) {
