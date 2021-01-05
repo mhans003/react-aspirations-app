@@ -27,7 +27,7 @@ userRouter.post("/register", (request, response) => {
             response.status(500).json(
                 {
                     message: {
-                        msgBody: "An error occured", 
+                        msgBody: "An error occured while searching for username.", 
                         msgError: true
                     }
                 }
@@ -45,13 +45,15 @@ userRouter.post("/register", (request, response) => {
             );
         } else {
             //Otherwise, create the user using the new credentials.
-            const newUser = new User({username, password, email, role});
+            const newUser = new User({email, username, password, role});
+            console.log(newUser);
             newUser.save(error => {
                 if(error) {
+                    console.log(error);
                     response.status(500).json(
                         {
                             message: {
-                                msgBody: "An error occured", 
+                                msgBody: "An error occured while registering user.", 
                                 msgError: true
                             }
                         }

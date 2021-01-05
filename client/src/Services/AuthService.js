@@ -6,8 +6,17 @@ export default {
             headers: {
                 "Content-Type": "application/json"
             }
-        }).then(response => response.json())
-          .then(data => data);
+        }).then(response => {
+            //Passport sends 401 error back if not authenticated
+            if(response.status !== 401) {
+                return response.json().then(data => data);
+            } else {
+                return { 
+                    isAuthenticated: false,
+                    user: {email: "", username: "", role: ""}
+                };
+            }
+        });
     },
     register: user => {
         return fetch("/user/register", {
@@ -34,7 +43,7 @@ export default {
                 } else {
                     return { 
                         isAuthenticated: false,
-                        user: {username: "", role: ""}
+                        user: {email: "", username: "", role: ""}
                     };
                 }
             });
