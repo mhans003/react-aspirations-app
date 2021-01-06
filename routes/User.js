@@ -170,10 +170,39 @@ userRouter.put("/aspiration/:id", passport.authenticate("jwt", {session: false})
     ).then(result => {
         console.log(result);
         response.json(result);
+    }).catch(error => {
+        response.json(error);
+    });
+});
+
+//Delete a milestone from an existing aspiration.
+userRouter.delete("/aspiration/:id", passport.authenticate("jwt", {session: false}), (request, response) => {
+    console.log(request.params.id);
+    console.log(request.body.id);
+    Aspiration.updateOne(
+        {_id: request.params.id},
+        {$pull: {milestones: {id: request.body.id}}}
+    ).then(result => {
+        console.log(result);
+        response.json(result);
+    }).catch(error => {
+        response.json(error);
+    });
+
+    /*
+    console.log(request.body);
+    console.log(request.params.id);
+    Aspiration.updateOne(
+        {_id: request.params.id},
+        {$push: {milestones: request.body}}
+    ).then(result => {
+        console.log(result);
+        response.json(result);
     })
     .catch(error => {
         response.json(error);
     });
+    */
 });
 
 //Get all aspirations for a user.

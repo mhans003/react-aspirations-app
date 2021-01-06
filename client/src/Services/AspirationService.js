@@ -56,5 +56,26 @@ export default {
                 };
             }
         })
+    },
+    //Delete a milestone from an aspiration
+    deleteMilestone: (aspirationId, milestoneId) => {
+        return fetch(`/user/aspiration/${aspirationId}`, {
+            method: "delete",
+            body: JSON.stringify(milestoneId),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(response => {
+            if(response.status !== 401) {
+                return response.json().then(data => data);
+            } else {
+                return {
+                    message: {
+                        msgBody: "Unauthorized",
+                        msgError: true
+                    }
+                };
+            }
+        });
     }
 }
