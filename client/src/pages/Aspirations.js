@@ -15,11 +15,15 @@ const Aspirations = (props) => {
 
     //Get the aspirations 
     useEffect(() => {
+        retrieveAspirations();
+    }, []);
+
+    const retrieveAspirations = () => {
         AspirationService.getAspirations().then(data => {
             //Store the retrieved aspirations.
             setAspirations(data.aspirations);
         });
-    }, []);
+    };
 
     //Handle submit of new aspiration.
     const handleSubmit = event => {
@@ -55,6 +59,7 @@ const Aspirations = (props) => {
             ...aspiration,
             [event.target.name]: event.target.value
         });
+        console.log(aspiration);
     }
 
     //Reset the form when submitted.
@@ -67,7 +72,7 @@ const Aspirations = (props) => {
             <div className="aspiration-list">
                 {
                     aspirations.map(thisAspiration => {
-                        return <Aspiration key={thisAspiration._id} aspiration={thisAspiration}/>
+                        return <Aspiration key={thisAspiration._id} aspiration={thisAspiration} retrieveAspirations={retrieveAspirations}/>
                     })
                 }
             </div>

@@ -159,6 +159,23 @@ userRouter.post("/aspiration", passport.authenticate("jwt", {session: false}), (
     })
 });
 
+//Create a new milestone for an existing aspiration.
+userRouter.put("/aspiration/:id", passport.authenticate("jwt", {session: false}), (request, response) => {
+    //Create the instance of the new aspiration using the request body.
+    console.log(request.body);
+    console.log(request.params.id);
+    Aspiration.updateOne(
+        {_id: request.params.id},
+        {$push: {milestones: request.body}}
+    ).then(result => {
+        console.log(result);
+        response.json(result);
+    })
+    .catch(error => {
+        response.json(error);
+    });
+});
+
 //Get all aspirations for a user.
 userRouter.get("/aspirations", passport.authenticate("jwt", {session: false}), (request, response) => {
     //Using the loggged in user's ID, find and populate the aspirations array.

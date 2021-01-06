@@ -17,7 +17,7 @@ const aspirationSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    Milestones: {
+    milestones: {
         type: Array
     },
     status: {
