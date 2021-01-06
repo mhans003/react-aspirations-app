@@ -77,5 +77,26 @@ export default {
                 };
             }
         });
+    },
+    //Edit an aspiration
+    editAspiration: (aspirationId, newAspiration) => {
+        return fetch(`/user/aspiration/edit/${aspirationId}`, {
+            method: "put",
+            body: JSON.stringify(newAspiration),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(response => {
+            if(response.status !== 401) {
+                return response.json().then(data => data);
+            } else {
+                return {
+                    message: {
+                        msgBody: "Unauthorized",
+                        msgError: true
+                    }
+                };
+            }
+        });
     }
 }

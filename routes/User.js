@@ -188,21 +188,20 @@ userRouter.delete("/aspiration/:id", passport.authenticate("jwt", {session: fals
     }).catch(error => {
         response.json(error);
     });
+});
 
-    /*
-    console.log(request.body);
+userRouter.put("/aspiration/edit/:id", passport.authenticate("jwt", {session: false}), (request, response) => {
     console.log(request.params.id);
-    Aspiration.updateOne(
+    console.log(request.body);
+    Aspiration.findOneAndUpdate(
         {_id: request.params.id},
-        {$push: {milestones: request.body}}
+        {$set: {title: request.body.title, description: request.body.description}}
     ).then(result => {
         console.log(result);
         response.json(result);
-    })
-    .catch(error => {
+    }).catch(error => {
         response.json(error);
     });
-    */
 });
 
 //Get all aspirations for a user.

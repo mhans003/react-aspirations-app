@@ -1,8 +1,13 @@
 import { useState } from "react";
 import AspirationService from "../../Services/AspirationService";
 
+import EditAspiration from "../EditAspiration";
+
 const Aspiration = (props) => {
     console.log(props.aspiration.milestones);
+
+    //Set state for edit modal.
+    const [editAspirationShow, setEditAspirationShow] = useState(false);
 
     const [milestone, setMilestone] = useState({text: "", id: ""});
 
@@ -38,9 +43,17 @@ const Aspiration = (props) => {
         });
     }
 
+    //Modal handlers
+    const handleEditAspirationClose = () => setEditAspirationShow(false);
+    const handleEditAspirationShow = () => setEditAspirationShow(true);
+
     return (
         <div className="card">
-            <h5 className="card-header">{props.aspiration.title}</h5>
+            <h5 className="card-header">
+                {props.aspiration.title}
+                <button className="btn btn-secondary fas fa-edit" onClick={() => handleEditAspirationShow()}></button>
+                <button className="btn btn-danger fas fa-trash-alt"></button>
+            </h5>
             <div className="card-body">
                 <p className="card-text">{props.aspiration.description}</p>
                 <ul>
@@ -50,8 +63,7 @@ const Aspiration = (props) => {
                             return (
                                 <li>
                                     {milestone.text}
-                                    <button milestoneId={milestone.id} onClick={handleMilestoneDelete} class="btn btn-sm btn-primary">
-                                        Delete
+                                    <button milestoneId={milestone.id} onClick={handleMilestoneDelete} class="btn btn-sm btn-danger fas fa-trash-alt">
                                     </button>
                                 </li>
                             );
@@ -68,6 +80,14 @@ const Aspiration = (props) => {
                     </button>
                 </form>
             </div>
+            <EditAspiration 
+                title={props.aspiration.title} 
+                description={props.aspiration.description} 
+                id={props.aspiration._id}
+                editAspirationShow={editAspirationShow}
+                handleEditAspirationClose={handleEditAspirationClose}
+                retrieveAspirations={props.retrieveAspirations}
+            />
         </div>
     );
 }
