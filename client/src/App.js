@@ -3,6 +3,9 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Aspirations from "./pages/Aspirations";
+import Admin from "./pages/Admin";
+import PrivateRoute from "./hocs/PrivateRoute";
+import PublicRoute from "./hocs/PublicRoute";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function App() {
@@ -11,9 +14,10 @@ function App() {
         <Router>
             <Header/>
             <Route exact path="/" component={Home}/>
-            <Route exact path="/login" component={Login}/>
-            <Route exact path="/register" component={Register}/>
-            <Route exact path="/aspirations" component={Aspirations}/>
+            <PublicRoute exact path="/login" component={Login}/>
+            <PublicRoute exact path="/register" component={Register}/>
+            <PrivateRoute exact path="/aspirations" roles={["user", "admin"]} component={Aspirations}/>
+            <PrivateRoute exact path="/admin" roles={["admin"]} component={Admin}/>
         </Router>
     );
 }
