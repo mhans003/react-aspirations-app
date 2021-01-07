@@ -3,6 +3,7 @@ import AspirationService from "../../Services/AspirationService";
 
 import EditAspiration from "../EditAspiration";
 import EditMilestone from "../EditMilestone";
+import DeleteAspiration from "../DeleteAspiration";
 
 const Aspiration = (props) => {
     console.log(props.aspiration.milestones);
@@ -10,6 +11,7 @@ const Aspiration = (props) => {
     //Set state for edit modals.
     const [editAspirationShow, setEditAspirationShow] = useState(false);
     const [editMilestoneShow, setEditMilestoneShow] = useState(false);
+    const [deleteAspirationShow, setDeleteAspirationShow] = useState(false);
 
     const [milestone, setMilestone] = useState({text: "", id: ""});
 
@@ -54,6 +56,9 @@ const Aspiration = (props) => {
     const handleEditAspirationClose = () => setEditAspirationShow(false);
     const handleEditAspirationShow = () => setEditAspirationShow(true);
 
+    const handleDeleteAspirationClose = () => setDeleteAspirationShow(false);
+    const handleDeleteAspirationShow = () => setDeleteAspirationShow(true);
+
     const handleEditMilestoneClose = () => setEditMilestoneShow(false);
     const handleEditMilestoneShow = (text, id, aspirationId) => {
         setMilestoneText(text);
@@ -67,7 +72,7 @@ const Aspiration = (props) => {
             <h5 className="card-header">
                 {props.aspiration.title}
                 <button className="btn btn-secondary fas fa-edit" onClick={() => handleEditAspirationShow()}></button>
-                <button className="btn btn-danger fas fa-trash-alt"></button>
+                <button className="btn btn-danger fas fa-trash-alt" onClick={() => handleDeleteAspirationShow()}></button>
             </h5>
             <div className="card-body">
                 <p className="card-text">{props.aspiration.description}</p>
@@ -111,6 +116,14 @@ const Aspiration = (props) => {
                 aspirationId={aspirationId}
                 editMilestoneShow={editMilestoneShow}
                 handleEditMilestoneClose={handleEditMilestoneClose}
+                retrieveAspirations={props.retrieveAspirations}
+            />
+            <DeleteAspiration
+                title={props.aspiration.title}
+                description={props.aspiration.description}
+                id={props.aspiration._id}
+                deleteAspirationShow={deleteAspirationShow}
+                handleDeleteAspirationClose={handleDeleteAspirationClose}
                 retrieveAspirations={props.retrieveAspirations}
             />
         </div>

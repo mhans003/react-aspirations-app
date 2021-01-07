@@ -221,6 +221,21 @@ userRouter.put("/aspiration/edit/:id", passport.authenticate("jwt", {session: fa
     });
 });
 
+//Delete an aspiration.
+userRouter.delete("/aspiration/delete/:id", passport.authenticate("jwt", {session: false}), (request, response) => {
+    console.log("in delete route");
+    console.log("id:" + request.params.id);
+    Aspiration.remove(
+        {_id: request.params.id}
+    ).then(result => {
+        console.log(result);
+        response.json(result);
+    }).catch(error => {
+        response.json(error);
+        console.log(error);
+    });
+});
+
 //Get all aspirations for a user.
 userRouter.get("/aspirations", passport.authenticate("jwt", {session: false}), (request, response) => {
     //Using the loggged in user's ID, find and populate the aspirations array.
