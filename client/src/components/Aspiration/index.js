@@ -2,14 +2,21 @@ import { useState } from "react";
 import AspirationService from "../../Services/AspirationService";
 
 import EditAspiration from "../EditAspiration";
+import EditMilestone from "../EditMilestone";
 
 const Aspiration = (props) => {
     console.log(props.aspiration.milestones);
 
-    //Set state for edit modal.
+    //Set state for edit modals.
     const [editAspirationShow, setEditAspirationShow] = useState(false);
+    const [editMilestoneShow, setEditMilestoneShow] = useState(false);
 
     const [milestone, setMilestone] = useState({text: "", id: ""});
+
+    //Keep track of text for milestone to edit
+    const [milestoneText, setMilestoneText] = useState("");
+    const [milestoneId, setMilestoneId] = useState("");
+    const [aspirationId, setAspirationId] = useState("");
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -47,6 +54,14 @@ const Aspiration = (props) => {
     const handleEditAspirationClose = () => setEditAspirationShow(false);
     const handleEditAspirationShow = () => setEditAspirationShow(true);
 
+    const handleEditMilestoneClose = () => setEditMilestoneShow(false);
+    const handleEditMilestoneShow = (text, id, aspirationId) => {
+        setMilestoneText(text);
+        setMilestoneId(id);
+        setAspirationId(aspirationId);
+        setEditMilestoneShow(true);
+    }
+
     return (
         <div className="card">
             <h5 className="card-header">
@@ -63,6 +78,8 @@ const Aspiration = (props) => {
                             return (
                                 <li>
                                     {milestone.text}
+                                    <button milestoneId={milestone.id} onClick={() => handleEditMilestoneShow(milestone.text, milestone.id, props.aspiration._id)} class="btn btn-sm btn-secondary fas fa-edit">
+                                    </button>
                                     <button milestoneId={milestone.id} onClick={handleMilestoneDelete} class="btn btn-sm btn-danger fas fa-trash-alt">
                                     </button>
                                 </li>
@@ -86,6 +103,14 @@ const Aspiration = (props) => {
                 id={props.aspiration._id}
                 editAspirationShow={editAspirationShow}
                 handleEditAspirationClose={handleEditAspirationClose}
+                retrieveAspirations={props.retrieveAspirations}
+            />
+            <EditMilestone
+                text={milestoneText}
+                id={milestoneId}
+                aspirationId={aspirationId}
+                editMilestoneShow={editMilestoneShow}
+                handleEditMilestoneClose={handleEditMilestoneClose}
                 retrieveAspirations={props.retrieveAspirations}
             />
         </div>

@@ -190,6 +190,23 @@ userRouter.delete("/aspiration/:id", passport.authenticate("jwt", {session: fals
     });
 });
 
+//Edit a milestone in an existing aspiration
+userRouter.put("/aspiration/:aspirationId/:milestoneId", passport.authenticate("jwt", {session: false}), (request, response) => {
+    console.log(request.body.text);
+    console.log(request.params.aspirationId);
+    console.log(request.params.milestoneId);
+    Aspiration.updateOne(
+        {_id: request.params.aspirationId, "milestones.id": request.params.milestoneId},
+        {$set: {"milestones.$.text": request.body.text}}
+    ).then(result => {
+        console.log(result);
+        response.json(result);
+    }).catch(error => {
+        response.json(error);
+    });
+});
+
+//Edit an aspiration.
 userRouter.put("/aspiration/edit/:id", passport.authenticate("jwt", {session: false}), (request, response) => {
     console.log(request.params.id);
     console.log(request.body);

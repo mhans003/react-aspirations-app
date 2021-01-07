@@ -98,5 +98,26 @@ export default {
                 };
             }
         });
+    },
+    //Edit a milestone in an existing aspiration.
+    editMilestone: (milestoneId, editedMilestone, aspirationId) => {
+        return fetch(`/user/aspiration/${aspirationId}/${milestoneId}`, {
+            method: "put",
+            body: JSON.stringify(editedMilestone),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(response => {
+            if(response.status !== 401) {
+                return response.json().then(data => data);
+            } else {
+                return {
+                    message: {
+                        msgBody: "Unauthorized",
+                        msgError: true
+                    }
+                };
+            }
+        });
     }
 }
