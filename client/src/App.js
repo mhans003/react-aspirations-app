@@ -10,16 +10,13 @@ import PublicRoute from "./hocs/PublicRoute";
 import "./pages/style.css"
 
 function App() {
-    //Pull out values from context (global state), using the AuthContext.
     return (
         <Router>
-            <Switch>
-                <Route exact path="/" component={Home}/>
-                <PublicRoute path="/login" component={Login}/>
-                <PublicRoute path="/register" component={Register}/>
-                <PrivateRoute path="/aspirations" roles={["user", "admin"]} component={Aspirations}/>
-                <PrivateRoute path="/admin" roles={["admin"]} component={Admin}/>
-            </Switch>
+            <Route exact path="/" component={Home}/>
+            <PublicRoute path="/login" component={Login}/>
+            <PublicRoute path="/register" component={Register}/>
+            <PrivateRoute path="/aspirations" roles={["user", "admin"]} component={Aspirations}/>
+            <PrivateRoute path="/admin" roles={["admin"]} component={Admin}/>
         </Router>
     );
 }
