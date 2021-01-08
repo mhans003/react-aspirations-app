@@ -13,7 +13,7 @@ function App() {
     return (
         <Router>
             <Route exact path="/" component={Home}/>
-            <PublicRoute path="/login" component={Login}/>
+            <Route path="/login" component={Login}/>
             <PublicRoute path="/register" component={Register}/>
             <PrivateRoute path="/aspirations" roles={["user", "admin"]} component={Aspirations}/>
             <PrivateRoute path="/admin" roles={["admin"]} component={Admin}/>
