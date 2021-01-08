@@ -24,9 +24,9 @@ const LogoutButton = () => {
         <span className="nav-item px-3">
             <Nav.Link onClick={handleLogOut}>
                 <div className="text-center">
-                    <hr className="hr-light d-lg-none"/>
+                    <hr className="hr-light d-md-none"/>
                     LOGOUT
-                    <hr className="hr-light d-lg-none"/>
+                    <hr className="hr-light d-md-none"/>
                 </div>
             </Nav.Link>
         </span>

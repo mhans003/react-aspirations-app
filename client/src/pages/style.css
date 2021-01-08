@@ -1,0 +1,19 @@
+body {
+    font-family: 'Nunito', sans-serif !important;
+}
+
+.navbar {
+    background-color: rgba(27, 156, 252, 0.2) !important;
+}
+
+.larger-spacing {
+    letter-spacing: 0.5rem;
+}
+
+.larger-text {
+    font-size: 2.5rem;
+}
+
+.golden-yellow {
+    color: rgba(245, 158, 1, 1.0);
+}

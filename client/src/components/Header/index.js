@@ -15,7 +15,6 @@ const Header = (props) => {
     const unauthenticatedNabar = () => {
         return (
             <>
-                <NavItem text={"HOME"} tagName={""} current={props.current}/>
                 <NavItem text={"LOGIN"} tagName={"login"} current={props.current}/>
                 <NavItem text={"REGISTER"} tagName={"register"} current={props.current}/>
             </>
@@ -27,7 +26,6 @@ const Header = (props) => {
         return (
             <>
                 <NavItem text={user.username} tagName={""} current={props.current}/>
-                <NavItem text={"HOME"} tagName={""} current={props.current}/>
                 <NavItem text={"ASPIRATIONS"} tagName={"aspirations"} current={props.current}/>
                 {
                     user.role === "admin" ? 
@@ -39,8 +37,8 @@ const Header = (props) => {
     };
 
     return (
-        <Navbar className="navbar-light bg-light" expand="md">
-            <Navbar.Brand href="/">ASPIRATIONS</Navbar.Brand>
+        <Navbar className="navbar-light bg-light p-5" expand="md">
+            <Navbar.Brand href="/"><span className="larger-spacing larger-text">ASP<span className="golden-yellow">↑</span>RE</span></Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav"/>
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ml-auto">

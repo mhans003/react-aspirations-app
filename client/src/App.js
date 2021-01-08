@@ -7,6 +7,7 @@ import Admin from "./pages/Admin";
 import PrivateRoute from "./hocs/PrivateRoute";
 import PublicRoute from "./hocs/PublicRoute";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import "./pages/style.css"
 
 function App() {
     //Pull out values from context (global state), using the AuthContext.
