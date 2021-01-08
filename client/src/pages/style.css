@@ -45,6 +45,26 @@ body {
     border: 1px solid rgba(100,130,170,1.0);
 }
 
+.btn-outline-primary {
+    color: rgba(20, 180, 255, 1.0);
+    border: 1px solid rgba(20, 180, 255, 1.0);
+    background-color: #fff;
+}
+
+.btn-outline-primary:hover, .btn-outline-primary:active, .btn-outline-primary:focus {
+    background-color: rgba(20, 180, 255, 1.0);
+    border: 1px solid rgba(20, 180, 255, 1.0);
+    color: #fff;
+}
+
+.card {
+    background-color: rgba(190, 230, 255, 0.2);
+}
+
+.card-header {
+    background-color: rgba(255, 240, 224, 1.0);
+}
+
 .larger-spacing {
     letter-spacing: 0.5rem;
 }
@@ -54,7 +74,7 @@ body {
 }
 
 .squeezed {
-    transform: scale(1, 0.9);
+    transform: scale(1, 0.85);
 }
 
 .font-light {

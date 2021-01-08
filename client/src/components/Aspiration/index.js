@@ -23,6 +23,8 @@ const Aspiration = (props) => {
     const handleSubmit = event => {
         event.preventDefault();
 
+        resetForm();
+
         console.log(milestone);
 
         AspirationService.postMilestone(props.aspiration._id, milestone).then(data => {
@@ -32,15 +34,16 @@ const Aspiration = (props) => {
         });
     }
 
+    //Reset the form when submitted.
+    const resetForm = () => {
+        setMilestone({text: "", id: ""});
+    }
+
     const onChange = event => {
         setMilestone({
             text: event.target.value,
             id: props.aspiration._id + (Math.floor(Math.random() * 999999) + 1) + (Math.floor(Math.random() * 999999) + 1)
         });
-    }
-
-    const resetForm = () => {
-        setMilestone({text: "", id: ""});
     }
 
     const handleMilestoneDelete = (event) => {
@@ -68,20 +71,24 @@ const Aspiration = (props) => {
     }
 
     return (
-        <div className="card">
-            <h4 className="card-header font-light">
+        <div className="card mx-3 my-2">
+            <h4 className="card-header font-light squeezed">
                 {props.aspiration.title}
-                <button className="btn btn-secondary fas fa-edit ml-2" onClick={() => handleEditAspirationShow()}></button>
-                <button className="btn btn-danger fas fa-trash-alt ml-2" onClick={() => handleDeleteAspirationShow()}></button>
+                <hr/>
+                <div className="text-center">
+                    <button className="btn btn-secondary fas fa-edit ml-2" onClick={() => handleEditAspirationShow()}></button>
+                    <button className="btn btn-danger fas fa-trash-alt ml-2" onClick={() => handleDeleteAspirationShow()}></button>
+                </div>
+                
             </h4>
             <div className="card-body">
-                <p className="card-text">{props.aspiration.description}</p>
+                <p className="card-text"><i>{props.aspiration.description}</i></p>
                 <ul>
                     {
                         props.aspiration.milestones ?
                         props.aspiration.milestones.map(milestone => {
                             return (
-                                <li>
+                                <li className="font-light">
                                     {milestone.text}
                                     <button milestoneid={milestone.id} onClick={() => handleEditMilestoneShow(milestone.text, milestone.id, props.aspiration._id)} className="btn btn-sm btn-secondary fas fa-edit ml-2">
                                     </button>
@@ -94,12 +101,14 @@ const Aspiration = (props) => {
                 </ul>
                 <hr/>
                 <form onSubmit={handleSubmit}>
-                    <div className="form-group">
+                    <div className="input-group">
                         <input type="text" name="milestone" value={milestone.text} onChange={onChange} className="form-control" minLength="1" required placeholder="New Milestone"/>
+                        <div class="input-group-append">
+                            <button className="btn btn-outline-primary" type="submit">
+                                Submit
+                            </button>
+                        </div>
                     </div>
-                    <button className="btn btn-sm btn-primary btn-block" type="submit">
-                        Submit
-                    </button>
                 </form>
             </div>
             <EditAspiration 

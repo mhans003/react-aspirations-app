@@ -4,6 +4,7 @@ import AspirationService from "../Services/AspirationService";
 import Aspiration from "../components/Aspiration";
 import Message from "../components/Message";
 import Header from "../components/Header";
+import NewAspiration from "../components/NewAspiration";
 
 const Aspirations = (props) => {
     //Set up state for aspiration and set of all saved aspirations.
@@ -79,17 +80,12 @@ const Aspirations = (props) => {
                 }
             </div>
             <hr/>
-            <form className="px-5 py-3" onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <input type="text" name="title" value={aspiration.title} onChange={onChange} className="form-control" placeholder="New Aspiration"/>
-                </div>
-                <div className="form-group">
-                    <input type="text" name="description" value={aspiration.description} onChange={onChange} className="form-control" placeholder="Description"/>
-                </div>
-                <button className="btn btn-lg btn-primary btn-block" type="submit">
-                    Submit
-                </button>
-            </form>
+            <NewAspiration
+                handleSubmit={handleSubmit}
+                onChange={onChange}
+                title={aspiration.title}
+                description={aspiration.description}
+            />
             {message ? <Message message={message}/> : null}
         </div>
     );
