@@ -69,11 +69,11 @@ const Aspiration = (props) => {
 
     return (
         <div className="card">
-            <h5 className="card-header">
+            <h4 className="card-header font-light">
                 {props.aspiration.title}
-                <button className="btn btn-secondary fas fa-edit" onClick={() => handleEditAspirationShow()}></button>
-                <button className="btn btn-danger fas fa-trash-alt" onClick={() => handleDeleteAspirationShow()}></button>
-            </h5>
+                <button className="btn btn-secondary fas fa-edit ml-2" onClick={() => handleEditAspirationShow()}></button>
+                <button className="btn btn-danger fas fa-trash-alt ml-2" onClick={() => handleDeleteAspirationShow()}></button>
+            </h4>
             <div className="card-body">
                 <p className="card-text">{props.aspiration.description}</p>
                 <ul>
@@ -83,9 +83,9 @@ const Aspiration = (props) => {
                             return (
                                 <li>
                                     {milestone.text}
-                                    <button milestoneid={milestone.id} onClick={() => handleEditMilestoneShow(milestone.text, milestone.id, props.aspiration._id)} className="btn btn-sm btn-secondary fas fa-edit">
+                                    <button milestoneid={milestone.id} onClick={() => handleEditMilestoneShow(milestone.text, milestone.id, props.aspiration._id)} className="btn btn-sm btn-secondary fas fa-edit ml-2">
                                     </button>
-                                    <button milestoneid={milestone.id} onClick={handleMilestoneDelete} className="btn btn-sm btn-danger fas fa-trash-alt">
+                                    <button milestoneid={milestone.id} onClick={handleMilestoneDelete} className="btn btn-sm btn-danger fas fa-trash-alt ml-2">
                                     </button>
                                 </li>
                             );

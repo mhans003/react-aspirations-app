@@ -5,6 +5,7 @@ import { AuthContext } from "../Context/AuthContext";
 //Import Components
 import Container from "../components/Container";
 import Message from "../components/Message";
+import Header from "../components/Header";
 
 const Register = (props) => {
     //Initialize user state.
@@ -68,9 +69,11 @@ const Register = (props) => {
     };
 
     return (
+        <>
+        <Header/>
         <Container>
             <form onSubmit={handleSubmit}>
-                <h3 className="text-center my-4">Register</h3>
+                <h3 className="text-center my-4 font-light larger-spacing squeezed">REGISTER</h3>
                 <hr className="my-4"/>
                 <div className="form-group">
                     <input type="email" name="email" onChange={handleChange} className="form-control form-control-lg" placeholder="Email" aria-label="Enter Email" disabled={disabled} required/>
@@ -85,11 +88,12 @@ const Register = (props) => {
                     <input type="text" name="role" onChange={handleChange} className="form-control form-control-lg" placeholder="user" value="user" disabled={true}/>
                 </div>
                 <button className="btn btn-lg btn-primary btn-block" type="submit" disabled={disabled}>
-                    Sign Up
+                    SIGN UP
                 </button>
             </form>
             {message ? <Message message={message}/> : null}
         </Container>
+        </>
     );
 };
 

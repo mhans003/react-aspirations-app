@@ -1,5 +1,11 @@
+import Header from "../components/Header";
+
 const Admin = () => {
-    return <h1>PLACEHOLDER ADMIN PAGE</h1>;
+    return (
+        <>
+            <Header/>
+        </>
+    );
 }
 
 export default Admin; 

@@ -1,9 +1,48 @@
 body {
     font-family: 'Nunito', sans-serif !important;
+    background-color: rgba(245, 158, 1, 0.02);
 }
 
 .navbar {
-    background-color: rgba(27, 156, 252, 0.2) !important;
+    background-color: rgba(190, 230, 255, 1.0) !important;
+}
+
+.nav-item {
+    letter-spacing: 0.17rem;
+    transform: scale(1, 0.95);
+}
+
+.nav-item:hover {
+    font-weight: 700;
+}
+
+.btn-primary {
+    background-color: rgba(20, 180, 255, 1.0);
+    border: 1px solid rgba(20, 180, 255, 1.0);
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+    color: rgba(20, 180, 255, 1.0);
+    background-color: #fff;
+    border: 1px solid rgba(20, 180, 255, 1.0);
+}
+
+.btn-danger {
+    background-color: #fff;
+    color: rgba(217, 83, 79, 1.0);
+    border: 1px solid rgba(217, 83, 79, 1.0);
+}
+
+.btn-secondary {
+    background-color: #fff;
+    color: rgba(100,130,170,1.0);
+    border: 1px solid rgba(100,130,170,1.0);
+}
+
+.btn-secondary:focus, .btn-secondary:hover, .btn-secondary:active {
+    background-color: rgba(100,130,170,1.0);
+    color: #fff;
+    border: 1px solid rgba(100,130,170,1.0);
 }
 
 .larger-spacing {
@@ -11,9 +50,35 @@ body {
 }
 
 .larger-text {
-    font-size: 2.5rem;
+    font-size: 3.0rem;
+}
+
+.squeezed {
+    transform: scale(1, 0.9);
+}
+
+.font-light {
+    font-weight: 100 !important;
 }
 
 .golden-yellow {
     color: rgba(245, 158, 1, 1.0);
+}
+
+@media screen and (max-width: 499px) {
+
+    .navbar-brand {
+        margin-left: auto !important; 
+        margin-right: auto !important; 
+        padding-left: auto !important; 
+        padding-right: auto !important; 
+    }
+
+    .navbar-toggler {
+        width: 97%; 
+        margin-left: auto !important; 
+        margin-right: auto !important; 
+        margin-bottom: 5px; 
+    }
+
 }

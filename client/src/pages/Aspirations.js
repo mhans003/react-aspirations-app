@@ -3,6 +3,7 @@ import { AuthContext } from "../Context/AuthContext";
 import AspirationService from "../Services/AspirationService";
 import Aspiration from "../components/Aspiration";
 import Message from "../components/Message";
+import Header from "../components/Header";
 
 const Aspirations = (props) => {
     //Set up state for aspiration and set of all saved aspirations.
@@ -69,6 +70,7 @@ const Aspirations = (props) => {
 
     return (
         <div>
+            <Header/>
             <div className="aspiration-list">
                 {
                     aspirations.map(thisAspiration => {
@@ -77,7 +79,7 @@ const Aspirations = (props) => {
                 }
             </div>
             <hr/>
-            <form onSubmit={handleSubmit}>
+            <form className="px-5 py-3" onSubmit={handleSubmit}>
                 <div className="form-group">
                     <input type="text" name="title" value={aspiration.title} onChange={onChange} className="form-control" placeholder="New Aspiration"/>
                 </div>
