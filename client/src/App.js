@@ -15,11 +15,10 @@ function App() {
         <Router>
             <Switch>
                 <Route exact path="/" component={Home}/>
-               
-                <Route exact path="/login" component={Login}/>
-                <PublicRoute exact path="/register" component={Register}/>
-                <PrivateRoute exact path="/aspirations" roles={["user", "admin"]} component={Aspirations}/>
-                <PrivateRoute exact path="/admin" roles={["admin"]} component={Admin}/>
+                <PublicRoute path="/login" component={Login}/>
+                <PublicRoute path="/register" component={Register}/>
+                <PrivateRoute path="/aspirations" roles={["user", "admin"]} component={Aspirations}/>
+                <PrivateRoute path="/admin" roles={["admin"]} component={Admin}/>
             </Switch>
         </Router>
     );
