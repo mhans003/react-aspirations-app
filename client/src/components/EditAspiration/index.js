@@ -30,7 +30,7 @@ function EditAspiration(props) {
             <Modal show={props.editAspirationShow} onHide={props.handleEditAspirationClose}>
                 <Modal.Header closeButton className="dim-background">
                     <Modal.Title>
-                        <h2>Edit Aspiration</h2>
+                        <h2 className="font-light squeezed">Edit Aspiration</h2>
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body className="show-grid">

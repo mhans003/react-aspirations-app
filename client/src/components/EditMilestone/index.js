@@ -28,8 +28,7 @@ function EditMilestone(props) {
             <Modal show={props.editMilestoneShow} onHide={props.handleEditMilestoneClose}>
                 <Modal.Header closeButton className="dim-background">
                     <Modal.Title>
-                        <h2>Edit Milestone</h2>
-                        <h3>{props.id}</h3>
+                        <h2 className="font-light squeezed">Edit Milestone</h2>
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body className="show-grid">
