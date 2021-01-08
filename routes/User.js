@@ -162,6 +162,7 @@ userRouter.post("/aspiration", passport.authenticate("jwt", {session: false}), (
 //Create a new milestone for an existing aspiration.
 userRouter.put("/aspiration/:id", passport.authenticate("jwt", {session: false}), (request, response) => {
     //Create the instance of the new aspiration using the request body.
+    console.log("in put route to add new milestone");
     console.log(request.body);
     console.log(request.params.id);
     Aspiration.updateOne(
@@ -192,6 +193,7 @@ userRouter.delete("/aspiration/:id", passport.authenticate("jwt", {session: fals
 
 //Edit a milestone in an existing aspiration
 userRouter.put("/aspiration/:aspirationId/:milestoneId", passport.authenticate("jwt", {session: false}), (request, response) => {
+    console.log("in route to edit a milestone");
     console.log(request.body.text);
     console.log(request.params.aspirationId);
     console.log(request.params.milestoneId);
@@ -207,7 +209,8 @@ userRouter.put("/aspiration/:aspirationId/:milestoneId", passport.authenticate("
 });
 
 //Edit an aspiration.
-userRouter.put("/aspiration/edit/:id", passport.authenticate("jwt", {session: false}), (request, response) => {
+userRouter.put("/edit/aspiration/:id", passport.authenticate("jwt", {session: false}), (request, response) => {
+    console.log("in edit route");
     console.log(request.params.id);
     console.log(request.body);
     Aspiration.findOneAndUpdate(

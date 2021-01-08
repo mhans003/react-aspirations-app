@@ -5,23 +5,11 @@ import { AuthContext } from "../../Context/AuthContext";
 
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-
 import NavItem from "../NavItem";
+import LogoutButton from "../LogoutButton"
 
 const Header = (props) => {
-    const { isAuthenticated, user, setIsAuthenticated, setUser } = useContext(AuthContext);
-
-    //Handle logging the user out.
-    const handleLogOut = () => {
-        //Using the logout function in AuthService, log the user out.
-        AuthService.logout().then(data => {
-            //From server, we will now have an empty user, so we want to update the global state.
-            if(data.success) {
-                setUser(data.user);
-                setIsAuthenticated(false);
-            }
-        });
-    };
+    const { isAuthenticated, user } = useContext(AuthContext);
 
     //Render the navbar links when not logged in.
     const unauthenticatedNabar = () => {
@@ -45,11 +33,7 @@ const Header = (props) => {
                     user.role === "admin" ? 
                     <NavItem text={"ADMIN"} tagName={"admin"} current={props.current}/> : null
                 }
-                <span className="nav-item">
-                    <button type="button" className="btn btn-link" onClick={handleLogOut}>
-                        LOGOUT
-                    </button>
-                </span>
+                <LogoutButton/>
             </>
         );
     };

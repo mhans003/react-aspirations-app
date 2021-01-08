@@ -80,7 +80,7 @@ export default {
     },
     //Edit an aspiration
     editAspiration: (aspirationId, newAspiration) => {
-        return fetch(`/user/aspiration/edit/${aspirationId}`, {
+        return fetch(`/user/edit/aspiration/${aspirationId}`, {
             method: "put",
             body: JSON.stringify(newAspiration),
             headers: {

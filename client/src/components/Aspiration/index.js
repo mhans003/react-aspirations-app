@@ -44,8 +44,8 @@ const Aspiration = (props) => {
     }
 
     const handleMilestoneDelete = (event) => {
-        console.log(event.target.getAttribute("milestoneId"));
-        AspirationService.deleteMilestone(props.aspiration._id, {id: event.target.getAttribute("milestoneId")}).then(data => {
+        console.log(event.target.getAttribute("milestoneid"));
+        AspirationService.deleteMilestone(props.aspiration._id, {id: event.target.getAttribute("milestoneid")}).then(data => {
             console.log(data);
             //After deleting milestone, retrieve aspirations again.
             props.retrieveAspirations();
@@ -83,9 +83,9 @@ const Aspiration = (props) => {
                             return (
                                 <li>
                                     {milestone.text}
-                                    <button milestoneId={milestone.id} onClick={() => handleEditMilestoneShow(milestone.text, milestone.id, props.aspiration._id)} class="btn btn-sm btn-secondary fas fa-edit">
+                                    <button milestoneid={milestone.id} onClick={() => handleEditMilestoneShow(milestone.text, milestone.id, props.aspiration._id)} className="btn btn-sm btn-secondary fas fa-edit">
                                     </button>
-                                    <button milestoneId={milestone.id} onClick={handleMilestoneDelete} class="btn btn-sm btn-danger fas fa-trash-alt">
+                                    <button milestoneid={milestone.id} onClick={handleMilestoneDelete} className="btn btn-sm btn-danger fas fa-trash-alt">
                                     </button>
                                 </li>
                             );
@@ -106,6 +106,7 @@ const Aspiration = (props) => {
                 title={props.aspiration.title} 
                 description={props.aspiration.description} 
                 id={props.aspiration._id}
+                milestones={props.aspiration.milestones}
                 editAspirationShow={editAspirationShow}
                 handleEditAspirationClose={handleEditAspirationClose}
                 retrieveAspirations={props.retrieveAspirations}
