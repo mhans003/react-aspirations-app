@@ -72,21 +72,22 @@ const Aspirations = (props) => {
     return (
         <div>
             <Header/>
-            <div className="aspiration-list">
-                {
-                    aspirations.map(thisAspiration => {
-                        return <Aspiration key={thisAspiration._id} aspiration={thisAspiration} retrieveAspirations={retrieveAspirations}/>
-                    })
-                }
-            </div>
-            <hr/>
             <NewAspiration
                 handleSubmit={handleSubmit}
                 onChange={onChange}
                 title={aspiration.title}
                 description={aspiration.description}
             />
+            <hr/>
             {message ? <Message message={message}/> : null}
+            <div className="aspiration-list mb-5">
+                {
+                    aspirations.map(thisAspiration => {
+                        return <Aspiration key={thisAspiration._id} aspiration={thisAspiration} retrieveAspirations={retrieveAspirations}/>
+                    })
+                }
+            </div>
+            <hr className="mb-5"/>
         </div>
     );
 }

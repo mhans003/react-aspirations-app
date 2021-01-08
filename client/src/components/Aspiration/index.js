@@ -5,6 +5,10 @@ import EditAspiration from "../EditAspiration";
 import EditMilestone from "../EditMilestone";
 import DeleteAspiration from "../DeleteAspiration";
 
+import Container from "../Container";
+import Row from "../Row";
+import Col from "../Col";
+
 const Aspiration = (props) => {
     console.log(props.aspiration.milestones);
 
@@ -72,15 +76,22 @@ const Aspiration = (props) => {
 
     return (
         <div className="card mx-3 my-2">
-            <h4 className="card-header font-light squeezed">
+            <h2 className="card-header font-light squeezed">
                 {props.aspiration.title}
                 <hr/>
                 <div className="text-center">
-                    <button className="btn btn-secondary fas fa-edit ml-2" onClick={() => handleEditAspirationShow()}></button>
-                    <button className="btn btn-danger fas fa-trash-alt ml-2" onClick={() => handleDeleteAspirationShow()}></button>
-                </div>
-                
-            </h4>
+                    <Container>
+                        <Row>
+                            <Col size="col-6">
+                                <button className="btn btn-secondary btn-lg btn-block fas fa-edit mx-auto" onClick={() => handleEditAspirationShow()}></button>
+                            </Col>
+                            <Col size="col-6">
+                                <button className="btn btn-danger btn-lg btn-block fas fa-trash-alt mx-auto" onClick={() => handleDeleteAspirationShow()}></button>
+                            </Col>
+                        </Row>
+                    </Container>
+                </div>  
+            </h2>
             <div className="card-body">
                 <p className="card-text"><i>{props.aspiration.description}</i></p>
                 <ul>
