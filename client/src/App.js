@@ -12,11 +12,13 @@ import "./pages/style.css"
 function App() {
     return (
         <Router>
-            <Route exact path="/" component={Home}/>
-            <Route path="/login" component={Login}/>
-            <PublicRoute path="/register" component={Register}/>
-            <PrivateRoute path="/aspirations" roles={["user", "admin"]} component={Aspirations}/>
-            <PrivateRoute path="/admin" roles={["admin"]} component={Admin}/>
+            <Switch>
+                <Route exact path="/" component={Home}/>
+                <PublicRoute exact path="/login" component={Login}/>
+                <PublicRoute exact path="/register" component={Register}/>
+                <PrivateRoute exact path="/aspirations" roles={["user", "admin"]} component={Aspirations}/>
+                <PrivateRoute exact path="/admin" roles={["admin"]} component={Admin}/>
+            </Switch>
         </Router>
     );
 }
