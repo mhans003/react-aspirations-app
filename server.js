@@ -2,6 +2,7 @@
 require('dotenv').config()
 const express = require("express");
 const app = express();
+const path = require("path");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 if (process.env.NODE_ENV === "production") {
@@ -28,6 +29,11 @@ mongoose.connect(
 //Include Routes
 const userRouter = require("./routes/User");
 app.use("/user", userRouter);
+
+//If API routes are not used, use the React app.
+app.use(function(request, response) {
+    response.sendFile(path.join(__dirname, "/client/build/index.html"));
+});
 
 //Start Server
 app.listen(PORT, () => {

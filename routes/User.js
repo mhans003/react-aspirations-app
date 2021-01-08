@@ -1,6 +1,5 @@
 const express = require("express");
 const userRouter = express.Router();
-const path = require("path");
 const passport = require("passport");
 const passportConfig = require("../passport");
 const JWT = require("jsonwebtoken");
@@ -308,9 +307,5 @@ userRouter.use(function(request, response) {
     response.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 */
-
-userRouter.get("/*", function(request, response) {
-    response.sendFile(path.join(__dirname, 'build', 'index.html'));
-})
 
 module.exports = userRouter;
