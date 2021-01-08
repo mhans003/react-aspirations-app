@@ -302,9 +302,15 @@ userRouter.get("/authenticated", passport.authenticate("jwt", {session: false}),
     );
 });
 
+/*
 //If API routes are not used, use the React app.
 userRouter.use(function(request, response) {
     response.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
+*/
+
+userRouter.get("/*", function(request, response) {
+    response.sendFile(path.join(__dirname, "../client/build/index.html"));
+})
 
 module.exports = userRouter;
