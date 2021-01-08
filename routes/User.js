@@ -310,7 +310,7 @@ userRouter.use(function(request, response) {
 */
 
 userRouter.get("/*", function(request, response) {
-    response.sendFile(path.join(__dirname, "../client/build/index.html"));
+    response.sendFile(path.join(__dirname, 'build', 'index.html'));
 })
 
 module.exports = userRouter;
