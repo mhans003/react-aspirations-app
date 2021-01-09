@@ -224,6 +224,21 @@ userRouter.put("/edit/aspiration/:id", passport.authenticate("jwt", {session: fa
     });
 });
 
+//Toggle status of aspiration.
+userRouter.put("/status/:id", passport.authenticate("jwt", {session: false}), (request, response) => {
+    let newStatus = request.body.status === "In Progress" ? "Achieved" : "In Progress";
+    console.log(newStatus);
+    Aspiration.findOneAndUpdate(
+        {_id: request.params.id},
+        {$set: {status: newStatus}}
+    ).then(result => {
+        console.log(result);
+        response.json(result);
+    }).catch(error => {
+        response.json(error);
+    });
+});
+
 //Delete an aspiration.
 userRouter.delete("/aspiration/delete/:id", passport.authenticate("jwt", {session: false}), (request, response) => {
     console.log("in delete route");

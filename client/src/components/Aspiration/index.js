@@ -59,6 +59,12 @@ const Aspiration = (props) => {
         });
     }
 
+    const handleToggleComplete = (event) => {
+        AspirationService.toggleComplete(props.aspiration._id, {status: props.aspiration.status}).then(data => {
+            props.retrieveAspirations();
+        });
+    }
+
     //Modal handlers
     const handleEditAspirationClose = () => setEditAspirationShow(false);
     const handleEditAspirationShow = () => setEditAspirationShow(true);
@@ -76,8 +82,17 @@ const Aspiration = (props) => {
 
     return (
         <div className="card mx-3 my-2">
-            <h2 className="card-header font-light">
-                <span className="small-spacing">{props.aspiration.title}</span>
+            <div className="card-header">
+                <h3 className="small-spacing font-light">{props.aspiration.title}</h3>
+                <div>
+                    <i> 
+                        Status: <span className={`${props.aspiration.status === "In Progress" ? "text-muted" : "text-success"}`}>
+                            {props.aspiration.status}
+                        </span>
+                    </i>
+                    <button onClick={() => handleToggleComplete()} className={`btn btn-sm ml-2 ${props.aspiration.status === "In Progress" ? "fas fa-check btn-success" : "fas fa-undo btn-warning"}`}>
+                    </button>
+                </div>
                 <hr/>
                 <div className="text-center">
                     <Container>
@@ -91,7 +106,7 @@ const Aspiration = (props) => {
                         </Row>
                     </Container>
                 </div>  
-            </h2>
+            </div>
             <div className="card-body">
                 <p className="card-text"><i>{props.aspiration.description}</i></p>
                 <ul>
