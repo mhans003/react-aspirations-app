@@ -7,13 +7,14 @@ import Aspirations from "./pages/Aspirations";
 import Admin from "./pages/Admin";
 import PrivateRoute from "./hocs/PrivateRoute";
 import PublicRoute from "./hocs/PublicRoute";
+import HomeRoute from "./hocs/HomeRoute";
 import "./pages/style.css"
 
 function App() {
     return (
         <Router>
             <Switch>
-                <Route exact path="/" component={Register}/>
+                <HomeRoute exact path="/"/>
                 <PublicRoute exact path="/login" component={Login}/>
                 <PublicRoute exact path="/register" component={Register}/>
                 <PrivateRoute exact path="/aspirations" roles={["user", "admin"]} component={Aspirations}/>
