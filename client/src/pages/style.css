@@ -1,6 +1,6 @@
 body {
     font-family: 'Nunito', sans-serif !important;
-    background-color: rgba(245, 158, 1, 0.02);
+    /*background-color: rgba(245, 158, 1, 0.02);*/
 }
 
 .navbar {
@@ -35,14 +35,14 @@ body {
 
 .btn-secondary {
     background-color: #fff;
-    color: rgba(100,130,170,1.0);
-    border: 1px solid rgba(100,130,170,1.0);
+    color: rgba(20, 180, 255, 1.0);
+    border: 1px solid rgba(20, 180, 255, 1.0);
 }
 
 .btn-secondary:focus, .btn-secondary:hover, .btn-secondary:active {
-    background-color: rgba(100,130,170,1.0);
+    background-color: rgba(20, 180, 255, 1.0);
     color: #fff;
-    border: 1px solid rgba(100,130,170,1.0);
+    border: 1px solid rgba(20, 180, 255, 1.0);
 }
 
 .btn-outline-primary {
@@ -58,11 +58,13 @@ body {
 }
 
 .card {
-    background-color: rgba(190, 230, 255, 0.2);
+    /*background-color: rgba(255, 240, 224, 0.2);*/
+    
 }
 
 .card-header {
     background-color: rgba(255, 240, 224, 1.0);
+    /*background-color: rgba(225, 245, 255, 1.0);*/
 }
 
 .modal-header {
@@ -75,6 +77,10 @@ body {
 
 .larger-spacing {
     letter-spacing: 0.5rem;
+}
+
+.small-spacing {
+    letter-spacing: 0.1rem;
 }
 
 .larger-text {

@@ -13,7 +13,7 @@ function App() {
     return (
         <Router>
             <Switch>
-                <Route exact path="/" component={Home}/>
+                <Route exact path="/" component={Register}/>
                 <PublicRoute exact path="/login" component={Login}/>
                 <PublicRoute exact path="/register" component={Register}/>
                 <PrivateRoute exact path="/aspirations" roles={["user", "admin"]} component={Aspirations}/>

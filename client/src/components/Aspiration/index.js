@@ -76,8 +76,8 @@ const Aspiration = (props) => {
 
     return (
         <div className="card mx-3 my-2">
-            <h2 className="card-header font-light squeezed">
-                {props.aspiration.title}
+            <h2 className="card-header font-light">
+                <span className="small-spacing">{props.aspiration.title}</span>
                 <hr/>
                 <div className="text-center">
                     <Container>
@@ -97,9 +97,9 @@ const Aspiration = (props) => {
                 <ul>
                     {
                         props.aspiration.milestones ?
-                        props.aspiration.milestones.map(milestone => {
+                        props.aspiration.milestones.map((milestone, index) => {
                             return (
-                                <li className="font-light">
+                                <li className="font-light" key={index}>
                                     {milestone.text}
                                     <button milestoneid={milestone.id} onClick={() => handleEditMilestoneShow(milestone.text, milestone.id, props.aspiration._id)} className="btn btn-sm btn-secondary fas fa-edit ml-2">
                                     </button>
@@ -114,7 +114,7 @@ const Aspiration = (props) => {
                 <form onSubmit={handleSubmit}>
                     <div className="input-group">
                         <input type="text" name="milestone" value={milestone.text} onChange={onChange} className="form-control" minLength="1" required placeholder="New Milestone"/>
-                        <div class="input-group-append">
+                        <div className="input-group-append">
                             <button className="btn btn-outline-primary" type="submit">
                                 Submit
                             </button>

@@ -72,7 +72,7 @@ const Register = (props) => {
         <>
         <Header/>
         <Container>
-            <form onSubmit={handleSubmit}>
+            <form className="mt-5" onSubmit={handleSubmit}>
                 <h3 className="text-center my-4 font-light larger-spacing squeezed">REGISTER</h3>
                 <hr className="my-4"/>
                 <div className="form-group">

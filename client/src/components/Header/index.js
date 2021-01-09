@@ -25,8 +25,7 @@ const Header = (props) => {
     const authenticatedNavbar = () => {
         return (
             <>
-                <NavItem text={user.username} tagName={""} current={props.current}/>
-                <NavItem text={"ASPIRATIONS"} tagName={"aspirations"} current={props.current}/>
+                <NavItem text={`Welcome, ${user.username}`} tagName={"aspirations"} current={props.current}/>
                 {
                     user.role === "admin" ? 
                     <NavItem text={"ADMIN"} tagName={"admin"} current={props.current}/> : null
