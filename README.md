@@ -14,7 +14,7 @@ This in-progress full-stack web application allows users to create to-do items c
 
 When the user navigates to the homepage, they have the ability to login or register a new account using an email, username, and password. When logged into an account, the user can view all saved "aspirations" (including accompanying "milestones") and add a new aspiration with a description. When saved, a user may enter, edit, and delete milestones.
 
-This application stores user data in MongoDB Atlas while online, and authenticated is performed using Passport. Routes are protected using higher-order components which redirect users to/away certain pages whether logged in or not. 
+This application stores user data in MongoDB Atlas while online, and authentication is performed using Passport. Routes are protected using higher-order components which redirect users to/away certain pages whether logged in or not. 
 
 ## Features
 

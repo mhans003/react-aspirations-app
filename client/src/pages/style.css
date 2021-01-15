@@ -57,11 +57,6 @@ body {
     color: #fff;
 }
 
-.card {
-    /*background-color: rgba(255, 240, 224, 0.2);*/
-    
-}
-
 .card-header {
     background-color: rgba(255, 240, 224, 1.0);
     /*background-color: rgba(225, 245, 255, 1.0);*/

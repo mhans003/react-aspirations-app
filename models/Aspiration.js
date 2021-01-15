@@ -27,7 +27,7 @@ const aspirationSchema = new Schema({
     }
 });
 
-//Create and export the Post model variable.
+//Create and export the Aspiration model variable.
 const Aspiration = mongoose.model("Aspiration", aspirationSchema);
 
 module.exports = Aspiration;
