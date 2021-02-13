@@ -38,7 +38,7 @@ userRouter.post("/register", (request, response) => {
             response.status(400).json(
                 {
                     message: {
-                        msgBody: "An error occured", 
+                        msgBody: "It looks like this user already exists!", 
                         msgError: true
                     }
                 }
@@ -62,7 +62,7 @@ userRouter.post("/register", (request, response) => {
                     response.status(200).json(
                         {
                             message: {
-                                msgBody: "Successfully registered new user.",
+                                msgBody: "Successfully registered new user!",
                                 msgError: false
                             }
                         }
@@ -315,12 +315,5 @@ userRouter.get("/authenticated", passport.authenticate("jwt", {session: false}),
         }
     );
 });
-
-/*
-//If API routes are not used, use the React app.
-userRouter.use(function(request, response) {
-    response.sendFile(path.join(__dirname, "../client/build/index.html"));
-});
-*/
 
 module.exports = userRouter;
