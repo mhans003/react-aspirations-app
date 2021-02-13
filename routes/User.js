@@ -27,7 +27,7 @@ userRouter.post("/register", (request, response) => {
             response.status(500).json(
                 {
                     message: {
-                        msgBody: "An error occured while searching for username.", 
+                        msgBody: "An error occured while registering user.", 
                         msgError: true
                     }
                 }
@@ -114,6 +114,33 @@ userRouter.get("/logout", passport.authenticate("jwt", {session: false}), (reque
     );
 });
 
+//Get all aspirations for a user.
+userRouter.get("/aspirations", passport.authenticate("jwt", {session: false}), (request, response) => {
+    //Using the loggged in user's ID, find and populate the aspirations array.
+    User.findById({_id: request.user._id})
+        .populate("aspirations")
+        .exec((error, document) => {
+            if(error) {
+                response.status(500).json(
+                    {
+                        message: {
+                            msgBody: "An error occured", 
+                            msgError: true
+                        }
+                    }
+                );
+            } else {
+                //The aspirations array will be populated using the returned document.
+                response.status(200).json(
+                    {
+                        aspirations: document.aspirations, 
+                        authenticated: true
+                    }
+                );
+            }
+        });
+});
+
 //Create a new aspiration for an existing user.
 userRouter.post("/aspiration", passport.authenticate("jwt", {session: false}), (request, response) => {
     //Create the instance of the new aspiration using the request body.
@@ -170,9 +197,32 @@ userRouter.put("/aspiration/:id", passport.authenticate("jwt", {session: false})
         {$push: {milestones: request.body}}
     ).then(result => {
         console.log(result);
+        //response.json(result);
+        response.status(200).json(
+            {
+                message: {
+                    msgBody: "Successfully posted new milestone!",
+                    msgError: false
+                }
+            }
+        )
+    }).catch(error => {
+        response.status(500).json(error);
+    });
+});
+
+//Delete an aspiration.
+userRouter.delete("/aspiration/delete/:id", passport.authenticate("jwt", {session: false}), (request, response) => {
+    console.log("in delete route");
+    console.log("id:" + request.params.id);
+    Aspiration.remove(
+        {_id: request.params.id}
+    ).then(result => {
+        console.log(result);
         response.json(result);
     }).catch(error => {
         response.json(error);
+        console.log(error);
     });
 });
 
@@ -183,6 +233,22 @@ userRouter.delete("/aspiration/:id", passport.authenticate("jwt", {session: fals
     Aspiration.updateOne(
         {_id: request.params.id},
         {$pull: {milestones: {id: request.body.id}}}
+    ).then(result => {
+        console.log(result);
+        response.json(result);
+    }).catch(error => {
+        response.json(error);
+    });
+});
+
+//Edit an aspiration.
+userRouter.put("/edit/aspiration/:id", passport.authenticate("jwt", {session: false}), (request, response) => {
+    console.log("in edit route");
+    console.log(request.params.id);
+    console.log(request.body);
+    Aspiration.findOneAndUpdate(
+        {_id: request.params.id},
+        {$set: {title: request.body.title, description: request.body.description}}
     ).then(result => {
         console.log(result);
         response.json(result);
@@ -208,22 +274,6 @@ userRouter.put("/aspiration/:aspirationId/:milestoneId", passport.authenticate("
     });
 });
 
-//Edit an aspiration.
-userRouter.put("/edit/aspiration/:id", passport.authenticate("jwt", {session: false}), (request, response) => {
-    console.log("in edit route");
-    console.log(request.params.id);
-    console.log(request.body);
-    Aspiration.findOneAndUpdate(
-        {_id: request.params.id},
-        {$set: {title: request.body.title, description: request.body.description}}
-    ).then(result => {
-        console.log(result);
-        response.json(result);
-    }).catch(error => {
-        response.json(error);
-    });
-});
-
 //Toggle status of aspiration.
 userRouter.put("/status/:id", passport.authenticate("jwt", {session: false}), (request, response) => {
     let newStatus = request.body.status === "In Progress" ? "Achieved" : "In Progress";
@@ -237,48 +287,6 @@ userRouter.put("/status/:id", passport.authenticate("jwt", {session: false}), (r
     }).catch(error => {
         response.json(error);
     });
-});
-
-//Delete an aspiration.
-userRouter.delete("/aspiration/delete/:id", passport.authenticate("jwt", {session: false}), (request, response) => {
-    console.log("in delete route");
-    console.log("id:" + request.params.id);
-    Aspiration.remove(
-        {_id: request.params.id}
-    ).then(result => {
-        console.log(result);
-        response.json(result);
-    }).catch(error => {
-        response.json(error);
-        console.log(error);
-    });
-});
-
-//Get all aspirations for a user.
-userRouter.get("/aspirations", passport.authenticate("jwt", {session: false}), (request, response) => {
-    //Using the loggged in user's ID, find and populate the aspirations array.
-    User.findById({_id: request.user._id})
-        .populate("aspirations")
-        .exec((error, document) => {
-            if(error) {
-                response.status(500).json(
-                    {
-                        message: {
-                            msgBody: "An error occured", 
-                            msgError: true
-                        }
-                    }
-                );
-            } else {
-                //The aspirations array will be populated using the returned document.
-                response.status(200).json(
-                    {
-                        aspirations: document.aspirations, 
-                        authenticated: true
-                    }
-                );
-            }
-        });
 });
 
 //Log in to the admin panel if authenticated.

@@ -4,13 +4,15 @@ import AspirationService from "../../Services/AspirationService";
 import EditAspiration from "../EditAspiration";
 import EditMilestone from "../EditMilestone";
 import DeleteAspiration from "../DeleteAspiration";
+import Message from "../Message";
 
 import Container from "../Container";
 import Row from "../Row";
 import Col from "../Col";
 
 const Aspiration = (props) => {
-    console.log(props.aspiration.milestones);
+    //Initialize message state.
+    const [message, setMessage] = useState(null);
 
     //Set state for edit modals.
     const [editAspirationShow, setEditAspirationShow] = useState(false);
@@ -32,6 +34,15 @@ const Aspiration = (props) => {
         console.log(milestone);
 
         AspirationService.postMilestone(props.aspiration._id, milestone).then(data => {
+
+            //Once returned, pull out the needed data from the response.
+            const { message } = data;
+            console.log(message);
+
+            if(message) {
+                setMessage(message);
+            }
+
             console.log(data);
             //After adding milestone, retrieve aspirations again.
             props.retrieveAspirations();
@@ -136,6 +147,7 @@ const Aspiration = (props) => {
                         </div>
                     </div>
                 </form>
+                {message ? <Message message={message}/> : null}
             </div>
             <EditAspiration 
                 title={props.aspiration.title} 

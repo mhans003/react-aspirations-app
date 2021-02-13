@@ -50,11 +50,18 @@ export default {
             } else {
                 return {
                     message: {
-                        msgBody: "Unauthorized",
+                        msgBody: "You are not authorized.",
                         msgError: true
                     }
                 };
             }
+        }).catch(() => {
+            return {
+                message: {
+                    msgBody: "There was an error posting this milestone.",
+                    msgError: true
+                }
+            };
         })
     },
     //Delete a milestone from an aspiration
