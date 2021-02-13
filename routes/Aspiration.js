@@ -76,6 +76,37 @@ aspirationRouter.post("/", passport.authenticate("jwt", {session: false}), (requ
     })
 });
 
+//Edit an aspiration.
+aspirationRouter.put("/:id", passport.authenticate("jwt", {session: false}), (request, response) => {
+    console.log("in edit route");
+    console.log(request.params.id);
+    console.log(request.body);
+    Aspiration.findOneAndUpdate(
+        {_id: request.params.id},
+        {$set: {title: request.body.title, description: request.body.description}}
+    ).then(result => {
+        console.log(result);
+        response.json(result);
+    }).catch(error => {
+        response.json(error);
+    });
+});
+
+//Delete an aspiration.
+aspirationRouter.delete("/:id", passport.authenticate("jwt", {session: false}), (request, response) => {
+    console.log("in delete route");
+    console.log("id:" + request.params.id);
+    Aspiration.remove(
+        {_id: request.params.id}
+    ).then(result => {
+        console.log(result);
+        response.json(result);
+    }).catch(error => {
+        response.json(error);
+        console.log(error);
+    });
+});
+
 //Create a new milestone for an existing aspiration.
 aspirationRouter.post("/:id/milestones", passport.authenticate("jwt", {session: false}), (request, response) => {
     //Create the instance of the new aspiration using the request body.
@@ -101,21 +132,6 @@ aspirationRouter.post("/:id/milestones", passport.authenticate("jwt", {session: 
     });
 });
 
-//Delete an aspiration.
-aspirationRouter.delete("/:id", passport.authenticate("jwt", {session: false}), (request, response) => {
-    console.log("in delete route");
-    console.log("id:" + request.params.id);
-    Aspiration.remove(
-        {_id: request.params.id}
-    ).then(result => {
-        console.log(result);
-        response.json(result);
-    }).catch(error => {
-        response.json(error);
-        console.log(error);
-    });
-});
-
 //Delete a milestone from an existing aspiration.
 aspirationRouter.delete("/:id/milestones", passport.authenticate("jwt", {session: false}), (request, response) => {
     console.log(request.params.id);
@@ -123,22 +139,6 @@ aspirationRouter.delete("/:id/milestones", passport.authenticate("jwt", {session
     Aspiration.updateOne(
         {_id: request.params.id},
         {$pull: {milestones: {id: request.body.id}}}
-    ).then(result => {
-        console.log(result);
-        response.json(result);
-    }).catch(error => {
-        response.json(error);
-    });
-});
-
-//Edit an aspiration.
-aspirationRouter.put("/:id", passport.authenticate("jwt", {session: false}), (request, response) => {
-    console.log("in edit route");
-    console.log(request.params.id);
-    console.log(request.body);
-    Aspiration.findOneAndUpdate(
-        {_id: request.params.id},
-        {$set: {title: request.body.title, description: request.body.description}}
     ).then(result => {
         console.log(result);
         response.json(result);
