@@ -46,10 +46,8 @@ userRouter.post("/register", (request, response) => {
         } else {
             //Otherwise, create the user using the new credentials.
             const newUser = new User({email, username, password, role:"user"});
-            console.log(newUser);
             newUser.save(error => {
                 if(error) {
-                    console.log(error);
                     response.status(500).json(
                         {
                             message: {
