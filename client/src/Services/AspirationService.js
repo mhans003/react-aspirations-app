@@ -1,7 +1,7 @@
 export default {
     //Get all aspirations.
     getAspirations: () => {
-        return fetch("/user/aspirations")
+        return fetch("/aspirations")
             .then(response => {
                 if(response.status !== 401) {
                     return response.json().then(data => data);
@@ -17,7 +17,7 @@ export default {
     },
     //Save one aspiration.
     postAspiration: (aspiration) => {
-        return fetch("/user/aspiration", {
+        return fetch("/aspirations", {
             method: "post",
             body: JSON.stringify(aspiration),
             headers: {
@@ -38,7 +38,7 @@ export default {
     },
     //Post a milestone
     postMilestone: (aspirationId, milestone) => {
-        return fetch(`/user/aspiration/${aspirationId}`, {
+        return fetch(`/aspirations/${aspirationId}`, {
             method: "put",
             body: JSON.stringify(milestone),
             headers: {
@@ -66,7 +66,7 @@ export default {
     },
     //Delete a milestone from an aspiration
     deleteMilestone: (aspirationId, milestoneId) => {
-        return fetch(`/user/aspiration/${aspirationId}`, {
+        return fetch(`/aspirations/${aspirationId}`, {
             method: "delete",
             body: JSON.stringify(milestoneId),
             headers: {
@@ -87,7 +87,7 @@ export default {
     },
     //Edit an aspiration
     editAspiration: (aspirationId, newAspiration) => {
-        return fetch(`/user/edit/aspiration/${aspirationId}`, {
+        return fetch(`/aspirations/edit/${aspirationId}`, {
             method: "put",
             body: JSON.stringify(newAspiration),
             headers: {
@@ -108,7 +108,7 @@ export default {
     },
     //Edit a milestone in an existing aspiration.
     editMilestone: (milestoneId, editedMilestone, aspirationId) => {
-        return fetch(`/user/aspiration/${aspirationId}/${milestoneId}`, {
+        return fetch(`/aspirations/${aspirationId}/${milestoneId}`, {
             method: "put",
             body: JSON.stringify(editedMilestone),
             headers: {
@@ -129,7 +129,7 @@ export default {
     },
     //Delete an existing aspiration.
     deleteAspiration: (aspirationId) => {
-        return fetch(`/user/aspiration/delete/${aspirationId}`, {
+        return fetch(`/aspirations/delete/${aspirationId}`, {
             method: "delete",
             headers: {
                 "Content-Type": "application/json"
@@ -149,7 +149,7 @@ export default {
     },
     //Toggle status as in progress/complete
     toggleComplete: (aspirationId, aspirationStatus) => {
-        return fetch(`/user/status/${aspirationId}`, {
+        return fetch(`/aspirations/status/${aspirationId}`, {
             method: "put",
             body: JSON.stringify(aspirationStatus),
             headers: {

@@ -29,6 +29,8 @@ mongoose.connect(
 //Include Routes
 const userRouter = require("./routes/User");
 app.use("/user", userRouter);
+const aspirationRouter = require("./routes/Aspiration");
+app.use("/aspirations", aspirationRouter);
 
 //If API routes are not used, use the React app.
 app.use(function(request, response) {
