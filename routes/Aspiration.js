@@ -77,7 +77,7 @@ aspirationRouter.post("/", passport.authenticate("jwt", {session: false}), (requ
 });
 
 //Create a new milestone for an existing aspiration.
-aspirationRouter.put("/:id", passport.authenticate("jwt", {session: false}), (request, response) => {
+aspirationRouter.post("/:id/milestones", passport.authenticate("jwt", {session: false}), (request, response) => {
     //Create the instance of the new aspiration using the request body.
     console.log("in put route to add new milestone");
     console.log(request.body);
@@ -102,7 +102,7 @@ aspirationRouter.put("/:id", passport.authenticate("jwt", {session: false}), (re
 });
 
 //Delete an aspiration.
-aspirationRouter.delete("/delete/:id", passport.authenticate("jwt", {session: false}), (request, response) => {
+aspirationRouter.delete("/:id", passport.authenticate("jwt", {session: false}), (request, response) => {
     console.log("in delete route");
     console.log("id:" + request.params.id);
     Aspiration.remove(
@@ -117,7 +117,7 @@ aspirationRouter.delete("/delete/:id", passport.authenticate("jwt", {session: fa
 });
 
 //Delete a milestone from an existing aspiration.
-aspirationRouter.delete("/:id", passport.authenticate("jwt", {session: false}), (request, response) => {
+aspirationRouter.delete("/:id/milestones", passport.authenticate("jwt", {session: false}), (request, response) => {
     console.log(request.params.id);
     console.log(request.body.id);
     Aspiration.updateOne(
@@ -132,7 +132,7 @@ aspirationRouter.delete("/:id", passport.authenticate("jwt", {session: false}), 
 });
 
 //Edit an aspiration.
-aspirationRouter.put("/edit/:id", passport.authenticate("jwt", {session: false}), (request, response) => {
+aspirationRouter.put("/:id", passport.authenticate("jwt", {session: false}), (request, response) => {
     console.log("in edit route");
     console.log(request.params.id);
     console.log(request.body);

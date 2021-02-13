@@ -38,8 +38,8 @@ export default {
     },
     //Post a milestone
     postMilestone: (aspirationId, milestone) => {
-        return fetch(`/aspirations/${aspirationId}`, {
-            method: "put",
+        return fetch(`/aspirations/${aspirationId}/milestones`, {
+            method: "post",
             body: JSON.stringify(milestone),
             headers: {
                 "Content-Type": "application/json"
@@ -66,7 +66,7 @@ export default {
     },
     //Delete a milestone from an aspiration
     deleteMilestone: (aspirationId, milestoneId) => {
-        return fetch(`/aspirations/${aspirationId}`, {
+        return fetch(`/aspirations/${aspirationId}/milestones`, {
             method: "delete",
             body: JSON.stringify(milestoneId),
             headers: {
@@ -87,7 +87,7 @@ export default {
     },
     //Edit an aspiration
     editAspiration: (aspirationId, newAspiration) => {
-        return fetch(`/aspirations/edit/${aspirationId}`, {
+        return fetch(`/aspirations/${aspirationId}`, {
             method: "put",
             body: JSON.stringify(newAspiration),
             headers: {
@@ -129,7 +129,7 @@ export default {
     },
     //Delete an existing aspiration.
     deleteAspiration: (aspirationId) => {
-        return fetch(`/aspirations/delete/${aspirationId}`, {
+        return fetch(`/aspirations/${aspirationId}`, {
             method: "delete",
             headers: {
                 "Content-Type": "application/json"
