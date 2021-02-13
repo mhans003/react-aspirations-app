@@ -61,7 +61,6 @@ const Aspirations = (props) => {
             ...aspiration,
             [event.target.name]: event.target.value
         });
-        console.log(aspiration);
     }
 
     //Reset the form when submitted.

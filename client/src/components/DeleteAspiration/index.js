@@ -7,7 +7,6 @@ function DeleteAspiration(props) {
         event.preventDefault();
 
         AspirationService.deleteAspiration(props.id).then(data => {
-            console.log(data);
             //After deleting aspiration, retrieve aspirations again.
             props.retrieveAspirations();
         });

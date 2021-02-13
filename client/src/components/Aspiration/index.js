@@ -31,19 +31,15 @@ const Aspiration = (props) => {
 
         resetForm();
 
-        console.log(milestone);
-
         AspirationService.postMilestone(props.aspiration._id, milestone).then(data => {
 
             //Once returned, pull out the needed data from the response.
             const { message } = data;
-            console.log(message);
 
             if(message) {
                 setMessage(message);
             }
 
-            console.log(data);
             //After adding milestone, retrieve aspirations again.
             props.retrieveAspirations();
         });
@@ -62,9 +58,7 @@ const Aspiration = (props) => {
     }
 
     const handleMilestoneDelete = (event) => {
-        console.log(event.target.getAttribute("milestoneid"));
         AspirationService.deleteMilestone(props.aspiration._id, {id: event.target.getAttribute("milestoneid")}).then(data => {
-            console.log(data);
             //After deleting milestone, retrieve aspirations again.
             props.retrieveAspirations();
         });

@@ -14,10 +14,7 @@ function EditMilestone(props) {
             text: textRef.current.value
         };
 
-        console.log(editedMilestone);
-
         AspirationService.editMilestone(props.id, editedMilestone, props.aspirationId).then(data => {
-            console.log(data);
             //After editing milestone, retrieve aspirations again.
             props.retrieveAspirations();
         });

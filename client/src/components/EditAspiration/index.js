@@ -16,10 +16,7 @@ function EditAspiration(props) {
             description: descriptionRef.current.value
         };
 
-        console.log(editedAspiration);
-
         AspirationService.editAspiration(props.id, editedAspiration).then(data => {
-            console.log(data);
             //After editing aspiration, retrieve aspirations again.
             props.retrieveAspirations();
         });
