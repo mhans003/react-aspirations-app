@@ -125,7 +125,7 @@ const Aspiration = (props) => {
                         props.aspiration.milestones ?
                         props.aspiration.milestones.map((milestone, index) => {
                             return (
-                                <li className="font-light" key={index}>
+                                <li className="font-light my-1" key={index}>
                                     {milestone.text}
                                     <button milestoneid={milestone.id} onClick={() => handleEditMilestoneShow(milestone.text, milestone.id, props.aspiration._id)} className="btn btn-sm btn-secondary fas fa-edit ml-2">
                                     </button>
