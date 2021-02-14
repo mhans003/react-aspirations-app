@@ -4,7 +4,7 @@ body {
 }
 
 .navbar {
-    background-color: rgba(190, 230, 255, 1.0) !important;
+    background-color: rgba(83, 82, 237, 0.2) !important;
 }
 
 .nav-item {
@@ -17,14 +17,14 @@ body {
 }
 
 .btn-primary {
-    background-color: rgba(20, 180, 255, 1.0);
-    border: 1px solid rgba(20, 180, 255, 1.0);
+    background-color: rgba(83, 82, 237, 1.0);
+    border: 1px solid rgba(83, 82, 237, 1.0);
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
-    color: rgba(20, 180, 255, 1.0);
+    color: rgba(83, 82, 237, 1.0);
     background-color: #fff;
-    border: 1px solid rgba(20, 180, 255, 1.0);
+    border: 1px solid rgba(83, 82, 237, 1.0);
 }
 
 .btn-danger {
@@ -35,25 +35,25 @@ body {
 
 .btn-secondary {
     background-color: #fff;
-    color: rgba(20, 180, 255, 1.0);
-    border: 1px solid rgba(20, 180, 255, 1.0);
+    color: rgba(83, 82, 237, 1.0);
+    border: 1px solid rgba(83, 82, 237, 1.0);
 }
 
 .btn-secondary:focus, .btn-secondary:hover, .btn-secondary:active {
-    background-color: rgba(20, 180, 255, 1.0);
+    background-color: rgba(83, 82, 237, 1.0);
     color: #fff;
-    border: 1px solid rgba(20, 180, 255, 1.0);
+    border: 1px solid rgba(83, 82, 237, 1.0);
 }
 
 .btn-outline-primary {
-    color: rgba(20, 180, 255, 1.0);
-    border: 1px solid rgba(20, 180, 255, 1.0);
+    color: rgba(83, 82, 237, 1.0);
+    border: 1px solid rgba(83, 82, 237, 1.0);
     background-color: #fff;
 }
 
 .btn-outline-primary:hover, .btn-outline-primary:active, .btn-outline-primary:focus {
-    background-color: rgba(20, 180, 255, 1.0);
-    border: 1px solid rgba(20, 180, 255, 1.0);
+    background-color: rgba(83, 82, 237, 1.0);
+    border: 1px solid rgba(83, 82, 237, 1.0);
     color: #fff;
 }
 
