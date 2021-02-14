@@ -54,11 +54,16 @@ const Register = (props) => {
         });
     };
 
+    const handleLogInredirect = (event) => {
+        event.preventDefault();
+        props.history.push("/login");
+    };
+
     return (
         <>
         <Header/>
         <Container>
-            <form className="my-5" onSubmit={handleSubmit}>
+            <form className="mt-5" onSubmit={handleSubmit}>
                 <h1 className="text-center my-4 pb-5 font-light larger-spacing squeezed yellow-underline">REGISTER</h1>
                 <div className="form-group">
                     <input 
@@ -103,6 +108,11 @@ const Register = (props) => {
                 </div>
                 <button className="btn btn-lg btn-primary btn-block button-xl py-3" type="submit" disabled={disabled}>
                     Sign Up <i className="fad fa-user-plus ml-1"></i>
+                </button>
+            </form>
+            <form className="mt-2 mb-5" onSubmit={handleLogInredirect}>
+                <button className="btn btn-lg btn-info btn-block button-xl py-3" type="submit" disabled={disabled}>
+                    Log Into Existing Account
                 </button>
             </form>
             {message ? <Message message={message}/> : null}

@@ -63,6 +63,18 @@ body {
     color: #fff;
 }
 
+.btn-info {
+    background-color: rgba(245, 158, 1, 1.0);
+    border: 1px solid rgba(245, 158, 1, 1.0);
+    color: #fff;
+}
+
+.btn-info:hover, .btn-info:active, .btn-info:focus {
+    color: rgba(245, 158, 1, 1.0);
+    border: 1px solid rgba(245, 158, 1, 1.0);
+    background-color: #fff;
+}
+
 .button-xl {
     font-size: 1.6rem;
 }
