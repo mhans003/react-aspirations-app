@@ -71,16 +71,34 @@ const Login = (props) => {
         <>
         <Header/>
         <Container>
-            <form className="mt-5" onSubmit={handleSubmit}>
+            <form className="my-5" onSubmit={handleSubmit}>
                 <h1 className="text-center my-4 pb-5 font-light larger-spacing squeezed yellow-underline">SIGN IN</h1>
                 <div className="form-group">
-                    <input type="text" name="username" onChange={handleChange} className="form-control form-control-lg" placeholder="Username" aria-label="Enter Username" disabled={disabled} required/>
+                    <input 
+                        type="text" 
+                        name="username" 
+                        onChange={handleChange} 
+                        className="form-control form-control-lg form-xl" 
+                        placeholder="Username" 
+                        aria-label="Enter Username" 
+                        disabled={disabled} 
+                        required
+                    />
                 </div>
                 <div className="form-group">
-                    <input type="password" name="password" onChange={handleChange} className="form-control form-control-lg" placeholder="Password" aria-label="Enter Password" disabled={disabled} required/>
+                    <input 
+                        type="password" 
+                        name="password" 
+                        onChange={handleChange} 
+                        className="form-control form-control-lg form-xl" 
+                        placeholder="Password" 
+                        aria-label="Enter Password" 
+                        disabled={disabled} 
+                        required
+                    />
                 </div>
-                <button className="btn btn-lg btn-primary btn-block" type="submit" disabled={disabled}>
-                    LOG IN
+                <button className="btn btn-lg btn-primary btn-block button-xl py-3" type="submit" disabled={disabled}>
+                    LOG IN <i className="fad fa-sign-in-alt ml-1"></i>
                 </button>
             </form>
             {message ? <Message message={message}/> : null}
