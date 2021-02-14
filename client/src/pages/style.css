@@ -34,6 +34,11 @@ body {
 }
 
 .btn-danger {
+    background-color: rgba(217, 83, 79, 1.0);
+    border: 1px solid rgba(217, 83, 79, 1.0);
+}
+
+.btn-danger:hover, .btn-danger:focus, .btn-danger:active {
     background-color: #fff;
     color: rgba(217, 83, 79, 1.0);
     border: 1px solid rgba(217, 83, 79, 1.0);
@@ -80,7 +85,7 @@ body {
 }
 
 .card-header {
-    background-color: rgba(255, 240, 224, 1.0);
+    background-color: rgba(83, 82, 237, 0.2);
     /*background-color: rgba(225, 245, 255, 1.0);*/
 }
 
