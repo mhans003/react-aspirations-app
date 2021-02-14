@@ -59,8 +59,7 @@ const Register = (props) => {
         <Header/>
         <Container>
             <form className="mt-5" onSubmit={handleSubmit}>
-                <h3 className="text-center my-4 font-light larger-spacing squeezed">REGISTER</h3>
-                <hr className="my-4"/>
+                <h1 className="text-center my-4 pb-5 font-light larger-spacing squeezed yellow-underline">REGISTER</h1>
                 <div className="form-group">
                     <input type="email" name="email" onChange={handleChange} className="form-control form-control-lg" placeholder="Email" aria-label="Enter Email" disabled={disabled} required/>
                 </div>

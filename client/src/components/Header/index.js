@@ -36,8 +36,8 @@ const Header = (props) => {
     };
 
     return (
-        <Navbar className="navbar-light bg-light p-5" expand="md">
-            <Navbar.Brand href="/"><span className="larger-spacing larger-text font-light">ASP<span className="golden-yellow">↑</span>RE</span></Navbar.Brand>
+        <Navbar className="navbar-light bg-light py-5" expand="md">
+            <Navbar.Brand href="/"><span className="larger-spacing larger-text font-light pl-sm-5">ASP<span className="golden-yellow">↑</span>RE</span></Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav"/>
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ml-auto">

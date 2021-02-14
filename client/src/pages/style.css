@@ -94,7 +94,11 @@ body {
     color: rgba(245, 158, 1, 1.0);
 }
 
-@media screen and (max-width: 499px) {
+.yellow-underline {
+    border-bottom: 2px solid rgba(245, 158, 1, 1.0);
+}
+
+@media screen and (max-width: 575px) {
 
     .navbar-brand {
         margin-left: auto !important; 
