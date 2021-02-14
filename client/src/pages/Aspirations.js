@@ -77,7 +77,6 @@ const Aspirations = (props) => {
                 title={aspiration.title}
                 description={aspiration.description}
             />
-            <hr/>
             {message ? <Message message={message}/> : null}
             <div className="aspiration-list mb-5">
                 {

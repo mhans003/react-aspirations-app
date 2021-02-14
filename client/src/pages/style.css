@@ -45,15 +45,15 @@ body {
 }
 
 .btn-secondary {
-    background-color: #fff;
-    color: rgba(83, 82, 237, 1.0);
-    border: 1px solid rgba(83, 82, 237, 1.0);
+    background-color: #dcdcfb;
+    color: #000;
+    border: 1px solid #dcdcfb;
 }
 
 .btn-secondary:focus, .btn-secondary:hover, .btn-secondary:active {
-    background-color: rgba(83, 82, 237, 1.0);
-    color: #fff;
-    border: 1px solid rgba(83, 82, 237, 1.0);
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #dcdcfb;
 }
 
 .btn-outline-primary {
@@ -122,7 +122,22 @@ body {
 }
 
 .yellow-underline {
-    border-bottom: 2px solid rgba(245, 158, 1, 1.0);
+    border-bottom: 2px solid rgb(106, 69, 0);
+}
+
+.dark-purple {
+    color: rgba(83, 82, 237, 1.0);
+}
+
+/*Aspiration form*/
+
+.new-aspiration-wrapper {
+    background-image: url("../assets/images/sun.jpeg");
+    background-size: cover;
+}
+
+.new-aspiration-overlay {
+    background-color: rgba(87, 57, 2, 0.7);
 }
 
 @media screen and (max-width: 575px) {
