@@ -133,7 +133,7 @@ const Aspiration = (props) => {
                 <hr/>
                 <form onSubmit={handleSubmit}>
                     <div className="input-group">
-                        <input type="text" name="milestone" value={milestone.text} onChange={onChange} className="form-control" minLength="1" required placeholder="New Milestone"/>
+                        <input type="text" name="milestone" value={milestone.text} onChange={onChange} className="form-control purple-border" minLength="1" required placeholder="New Milestone"/>
                         <div className="input-group-append">
                             <button className="btn btn-outline-primary" type="submit">
                                 Submit

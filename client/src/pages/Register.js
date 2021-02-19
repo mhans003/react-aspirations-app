@@ -70,7 +70,7 @@ const Register = (props) => {
                         type="email" 
                         name="email" 
                         onChange={handleChange} 
-                        className="form-control form-control-lg form-xl" 
+                        className="form-control form-control-lg form-xl purple-border" 
                         placeholder="Email" 
                         aria-label="Enter Email" 
                         disabled={disabled} 
@@ -82,7 +82,7 @@ const Register = (props) => {
                         type="text" 
                         name="username" 
                         onChange={handleChange} 
-                        className="form-control form-control-lg form-xl" 
+                        className="form-control form-control-lg form-xl purple-border" 
                         placeholder="Username" 
                         aria-label="Enter Username" 
                         disabled={disabled} 
@@ -95,7 +95,7 @@ const Register = (props) => {
                         type="password" 
                         name="password" 
                         onChange={handleChange} 
-                        className="form-control form-control-lg form-xl" 
+                        className="form-control form-control-lg form-xl purple-border" 
                         placeholder="Password" 
                         aria-label="Enter Password" 
                         disabled={disabled} 

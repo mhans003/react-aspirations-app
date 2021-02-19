@@ -83,7 +83,7 @@ const Login = (props) => {
                         type="text" 
                         name="username" 
                         onChange={handleChange} 
-                        className="form-control form-control-lg form-xl" 
+                        className="form-control form-control-lg form-xl purple-border" 
                         placeholder="Username" 
                         aria-label="Enter Username" 
                         disabled={disabled} 
@@ -95,7 +95,7 @@ const Login = (props) => {
                         type="password" 
                         name="password" 
                         onChange={handleChange} 
-                        className="form-control form-control-lg form-xl" 
+                        className="form-control form-control-lg form-xl purple-border" 
                         placeholder="Password" 
                         aria-label="Enter Password" 
                         disabled={disabled} 

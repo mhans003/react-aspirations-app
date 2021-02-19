@@ -1,6 +1,5 @@
 body {
     font-family: 'Nunito', sans-serif !important;
-    /*background-color: rgba(245, 158, 1, 0.02);*/
 }
 
 .navbar {
@@ -126,11 +125,27 @@ body {
 }
 
 .yellow-underline {
-    border-bottom: 2px solid rgb(106, 69, 0);
+    border-bottom: 2px solid rgba(245, 158, 1, 1.0);
 }
 
 .dark-purple {
     color: rgba(83, 82, 237, 1.0);
+}
+
+.purple-border {
+    border-color: rgba(83, 82, 237, 0.5);
+}
+
+.purple-border:active, .purple-border:focus {
+    outline: none !important;
+}
+
+.purple-border:active, .purple-border:focus {
+    outline: none !important;
+    border: 1px solid rgba(83, 82, 237, 0.5) !important;
+    box-shadow: 0 0 3px rgba(83, 82, 237, 0.5) !important;
+    -moz-box-shadow: 0 0 3px rgba(83, 82, 237, 0.5) !important;
+    -webkit-box-shadow: 0 0 3px rgba(83, 82, 237, 0.5) !important;
 }
 
 /*Aspiration form*/
