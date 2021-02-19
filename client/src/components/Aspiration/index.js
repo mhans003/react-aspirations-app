@@ -88,7 +88,7 @@ const Aspiration = (props) => {
     return (
         <div className="card mx-sm-5 my-5">
             <div className="card-header">
-                <h3 className="small-spacing font-light">{props.aspiration.title}</h3>
+                <h3 className="small-spacing">{props.aspiration.title}</h3>
                 <div>
                     <i> 
                         Status: <span className={`${props.aspiration.status === "In Progress" ? "text-muted" : "text-success"}`}>
@@ -113,7 +113,7 @@ const Aspiration = (props) => {
                 </div>  
             </div>
             <div className="card-body">
-                <p className="card-text"><i>{props.aspiration.description}</i></p>
+                <p className="card-text description"><i>Description: {props.aspiration.description}</i></p>
                 <ul>
                     {
                         props.aspiration.milestones ?
